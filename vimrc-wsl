@@ -1,0 +1,97 @@
+set number
+autocmd vimenter * NERDTree
+let g:go_version_warning = 0
+
+syntax enable
+set background=light
+colorscheme elflord
+set term=screen-256color
+set t_ut=
+
+let g:NERDTreeWinPos = "left"
+map <C-n> :NERDTreeToggle<CR>
+autocmd vimenter * wincmd p
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+" Set the Leader
+let mapleader = "'"
+nnoremap <leader>so :source ~/.vim_runtime/my_configs.vim<CR>
+nnoremap <leader>tm :terminal<CR>  
+map <F6> :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
+
+" Basics
+set encoding=utf-8
+set relativenumber
+set clipboard=unnamed
+set expandtab tabstop=4 shiftwidth=4
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set cursorline
+set shell=bash
+set autochdir 
+set splitbelow
+
+" Disable beeping
+set noerrorbells
+set novisualbell
+set belloff=all
+ 
+" No swap files needed
+set nobackup       "no backup files
+set nowritebackup  "only in case you don't want a backup file while editing
+set noswapfile     "no swap files
+ 
+" No wrapping
+set nowrap
+
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+" Multiple Plug commands can be written in a single line using | separators
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+Plug 'NLKNguyen/papercolor-theme'
+
+Plug 'kien/ctrlp.vim'
+
+" Initialize plugin system
+call plug#end()
+
+" Global Plugin Config
+noremap <leader>f :Autoformat<CR>
+noremap <leader>nf :NERDTreeFind<CR>
+noremap <leader>nt :NERDTreeToggle<CR>
+noremap <leader>l :CtrlP<CR>
+noremap <leader>b :CtrlPBuffer<CR>
+nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-S-tab> :tabprevious<CR>
+nnoremap <C-t> :tabnew<CR>
+nnoremap <C-c> :tabclose<CR>
+tnoremap <C-tab>  <C-\><C-N>:tabnext<CR>
+tnoremap <C-S-tab> <C-\><C-N>:tabprevious<CR>
+tnoremap <C-t> <C-\><C-N>:tabnew<CR>
+
+" Window switching
+nmap <silent> <A-k> :wincmd k<CR>
+nmap <silent> <A-j> :wincmd j<CR>
+nmap <silent> <A-h> :wincmd h<CR>
+nmap <silent> <A-l> :wincmd l<CR>
+
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
