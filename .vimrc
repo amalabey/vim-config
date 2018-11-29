@@ -14,7 +14,7 @@ set smartcase
 set incsearch
 set hlsearch
 set cursorline
-set shell=powershell
+"set shell=powershell
 set autochdir 
 set splitbelow
 set splitright
@@ -62,7 +62,7 @@ if has("gui_running")
 endif
 
 set background=dark
-colorscheme PaperColor
+"colorscheme PaperColor
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -205,6 +205,8 @@ Plug 'pprovost/vim-ps1'
 Plug 'tpope/vim-dadbod'
 " Insert uuids
 Plug 'kburdett/vim-nuuid'
+
+
 " Initialize plugin system
 call plug#end()
 
@@ -448,7 +450,7 @@ autocmd FileType go nmap <Leader>a <Plug>(go-alternate)
 noremap <Leader>s :Ack <cword><cr>
 
 "Terminal
-nnoremap <leader>tm :terminal powershell<CR>
+"nnoremap <leader>tm :terminal powershell<CR>
 
 " Different background color for 80 charactors onwards
 let &colorcolumn=join(range(121,121),".")
